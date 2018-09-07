@@ -26,9 +26,10 @@
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto blanditiis voluptates, perferendis assumenda quo magnam, sequi quis totam eligendi provident et quam! Nostrum animi consequatur, inventore possimus dignissimos magni maiores?"
         }
     )
+    var section = document.createElement("section");
+    section.id="content-image-section";
     for(var i=0;i<content.length;i++){
         var article = document.createElement("article");
-        article.className= "col-x-12 col-s-6 col-md-4"
         article.innerHTML = '<div class="image-panel">' +
                                 '<header>'+
                                     '<img src = "'+ content[i].url +'"/>' +
@@ -42,9 +43,11 @@
                                     '</div>' +
                                 '</div>' +
                             '</div> ';
-        var cm = document.getElementById("content-main")
-        cm.appendChild(article)
+        section.appendChild(article);
     }
+    var cm = document.getElementById("content-main")
+    cm.appendChild(section);
+    $("#content-image-section").attr('style','max-width:calc(32rem * 3)')
 })();
 
 function toggle(){
@@ -52,9 +55,13 @@ function toggle(){
     if(v1=='' || typeof v1 === 'undefined'){
         $("#content-main").attr('style','width:100%')
         $("#content-sidebar").attr('style','width:0%')
+        $("#content-image-section").attr('style','max-width:calc(32rem * 5)')
+        
     }
     else{
         $("#content-main").attr('style','')
         $("#content-sidebar").attr('style','')
+        $("#content-image-section").attr('style','max-width:calc(32rem * 3)')
+
     }
 }
